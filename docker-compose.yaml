@@ -1,0 +1,43 @@
+services:
+  armada-assault:
+    build: ./ArmadaAssault
+    command: ["attack", "explore", "spread"]
+    volumes:
+      - ./config.json:/config.json
+    links:
+      - redis
+    depends_on:
+      - redis
+    environment:
+      REDIS_HOST: redis
+
+  sergeant-socket:
+    build: ./SergeantSocket
+    volumes:
+      - ./config.json:/config.json
+    links:
+      - redis
+    depends_on:
+      - redis
+    environment:
+      REDIS_HOST: redis
+
+  commander-cortex:
+    profiles:
+      - ui
+    build: ./CommanderCortex
+    volumes:
+      - ./config.json:/config.json
+    links:
+      - redis
+    depends_on:
+      - redis
+    environment:
+      REDIS_HOST: redis
+    stdin_open: true
+    tty: true
+
+  redis:
+    image: redis:alpine
+    ports:
+      - "6379:6379"
