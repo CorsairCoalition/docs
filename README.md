@@ -4,8 +4,8 @@
 
 We present an agent development and data collection framework for GIO:
 - highly modular microservices
-- all components communicate through [Redis](https://redis.io/) message broker
 - supports rapid development and testing of AI agents
+- uses [Redis](https://redis.io/) message broker for all communication
 - enables real-time data collection and analysis of agent performance
 - includes notebooks ([here](gg-analysis.ipynb) and [DeepNote](https://deepnote.com/workspace/insights-island-2232debf-8efe-49d0-80d9-20d155a36301/project/generalsio-analysis-51d1567e-7054-4223-9aa2-98354e1dc291/notebook/fetch-and-plot-f69012bef9f04e27aae6a600cd811276)) for interactive data analysis
 
@@ -17,6 +17,15 @@ We present an agent development and data collection framework for GIO:
 - [StrategySentinal](https://github.com/CorsairCoalition/StrategySentinal) - bot component that selects appropriate action
 - [ReplayRanger](https://github.com/CorsairCoalition/ReplayRanger) -  replay GIO game events on Redis for bot development
 - [Flobot](https://github.com/CorsairCoalition/Flobot) - highly capable bot that serves as a baseline adversary for testing
+
+
+### Architecture
+
+![Framework Architecture](images/gg-architecture.png)
+
+### Screenshot
+
+![Commander Cortex](images/commandercortex.png)
 
 ## Prerequisites
 
@@ -68,3 +77,7 @@ The Commander Cortex UI should appear. You are now ready to play against other b
 ## Gameplay Analysis
 
 See [gg-analysis.ipynb](gg-analysis.ipynb) for further details.
+
+## Support
+
+- [Discord: generals.io](https://discord.com/invite/QP63V5Y) -> #botting
