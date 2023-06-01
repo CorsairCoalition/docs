@@ -7,6 +7,7 @@ We present an agent development and data collection framework for GIO:
 - all components communicate through [Redis](https://redis.io/) message broker
 - supports rapid development and testing of AI agents
 - enables real-time data collection and analysis of agent performance
+- includes notebooks ([here](gg-analysis.ipynb) and [DeepNote](https://deepnote.com/workspace/insights-island-2232debf-8efe-49d0-80d9-20d155a36301/project/generalsio-analysis-51d1567e-7054-4223-9aa2-98354e1dc291/notebook/fetch-and-plot-f69012bef9f04e27aae6a600cd811276)) for interactive data analysis
 
 ## Components
 
@@ -66,4 +67,4 @@ The Commander Cortex UI should appear. You are now ready to play against other b
 
 ## Gameplay Analysis
 
-See [README.ipynb](README.ipynb) for further details.
+See [gg-analysis.ipynb](gg-analysis.ipynb) for further details.
