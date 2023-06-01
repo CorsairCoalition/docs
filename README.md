@@ -74,6 +74,14 @@ The Commander Cortex UI should appear. You are now ready to play against other b
 2. Edit `docker-compose.yaml` - replace `image:` with `build:`.
 3. Make desired changes and build a fresh image using `docker compose build`.
 
+See [GIO developer documentation](https://dev.generals.io/).
+
+## Testing
+
+- Use the [GIO bot server](https://bot.generals.io/) to create custom games.
+- Human against [Flobot](https://github.com/CorsairCoalition/Flobot) (1x speed) - [custom game: floatbot](https://bot.generals.io/games/floatbot)
+- Bot against [Flobot](https://github.com/CorsairCoalition/Flobot) (4x speed) - [custom game: cortex](https://bot.generals.io/games/cortex)
+
 ## Gameplay Analysis
 
 See [gg-analysis.ipynb](gg-analysis.ipynb) for further details.
