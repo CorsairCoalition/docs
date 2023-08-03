@@ -5,20 +5,28 @@ services:
     command: ["attack", "explore", "spread"]
     volumes:
       - ./config.json:/config.json
-    links:
-      - redis
     depends_on:
       - redis
     environment:
       REDIS_HOST: redis
+      REDIS_PORT: 6379
+      REDIS_TLS: false
+      REDIS_USERNAME: ""
+      REDIS_PASSWORD: ""
 
   sergeant-socket:
     # build: ./SergeantSocket
     image: ghcr.io/corsaircoalition/sergeantsocket:latest
     volumes:
       - ./config.json:/config.json
-    links:
+    depends_on:
       - redis
+    environment:
+      REDIS_HOST: redis
+      REDIS_PORT: 6379
+      REDIS_TLS: false
+      REDIS_USERNAME: ""
+      REDIS_PASSWORD: ""
 
   strategy-sentinel:
     # build: ./StrategySentinel
@@ -29,6 +37,10 @@ services:
       - redis
     environment:
       REDIS_HOST: redis
+      REDIS_PORT: 6379
+      REDIS_TLS: false
+      REDIS_USERNAME: ""
+      REDIS_PASSWORD: ""
 
   commander-cortex:
     profiles:
@@ -37,12 +49,14 @@ services:
     image: ghcr.io/corsaircoalition/commandercortex:latest
     volumes:
       - ./config.json:/config.json
-    links:
-      - redis
     depends_on:
       - redis
     environment:
       REDIS_HOST: redis
+      REDIS_PORT: 6379
+      REDIS_TLS: false
+      REDIS_USERNAME: ""
+      REDIS_PASSWORD: ""
     stdin_open: true
     tty: true
 
