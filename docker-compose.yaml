@@ -19,6 +19,12 @@ services:
       - ./config.json:/config.json
     links:
       - redis
+
+  strategy-sentinel:
+    # build: ./StrategySentinel
+    image: ghcr.io/corsaircoalition/strategysentinel:latest
+    volumes:
+      - ./config.json:/config.json
     depends_on:
       - redis
     environment:
