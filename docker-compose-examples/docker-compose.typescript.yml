@@ -51,6 +51,9 @@ services:
       - ./config.json:/config.json
     depends_on:
       - redis
+      - sergeant-socket
+      - strategy-sentinel
+      - armada-assault
     environment:
       REDIS_HOST: redis
       REDIS_PORT: 6379
