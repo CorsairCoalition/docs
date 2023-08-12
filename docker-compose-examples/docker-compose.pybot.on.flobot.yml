@@ -1,0 +1,61 @@
+services:
+
+  # Define the Redis service and expose Redis' default port on localhost
+  #
+  redis:
+    image: redis:alpine
+    ports:
+      - "6379:6379"
+
+  # Define first bot's SergeantSocket and CommanderCortex services
+  # Both services use config.pybot.json
+  #
+  sergeant-socket:
+    container_name: sergeant-socket-Pybot
+    image: ghcr.io/corsaircoalition/sergeantsocket:latest
+    volumes:
+      - ./config.pybot.json:/config.json # configuration for Pybot
+    depends_on:
+      - redis
+    environment: # use environment variables to override the values in config.json
+      REDIS_HOST: redis
+      REDIS_PORT: 6379
+      REDIS_TLS: false
+      REDIS_USERNAME: ""
+      REDIS_PASSWORD: ""
+
+  commander-cortex:
+    container_name: commander-cortex-Pybot
+    profiles:
+      - ui
+    image: ghcr.io/corsaircoalition/commandercortex:latest
+    volumes:
+      - ./config.pybot1.json:/config.json # configuration for bot 1
+    depends_on:
+      - redis
+      - sergeant-socket
+    environment: # use environment variables to override the values in config.json
+      REDIS_HOST: redis
+      REDIS_PORT: 6379
+      REDIS_TLS: false
+      REDIS_USERNAME: ""
+      REDIS_PASSWORD: ""
+    stdin_open: true
+    tty: true
+
+  # Define the Flobot service
+  # note that flobot uses config.flobot.json
+  flobot:
+    container_name: flobot
+    image: ghcr.io/corsaircoalition/flobot:latest
+    volumes:
+      - ./config.flobot.json:/config.json # configure Flobot to use config.flobot.json
+    depends_on:
+      - redis
+    command: ["-n", "5"] # instruct Flobot to play 5 games
+    environment: # use environment variables to override the values in config.json
+      REDIS_HOST: redis
+      REDIS_PORT: 6379
+      REDIS_TLS: false
+      REDIS_USERNAME: ""
+      REDIS_PASSWORD: ""
