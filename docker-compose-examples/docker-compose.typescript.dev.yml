@@ -40,7 +40,7 @@ services:
     depends_on:
       - redis
     environment:
-      REREDIS_HOST: redis
+      REDIS_HOST: redis
       REDIS_PORT: 6379
       REDIS_TLS: false
       REDIS_USERNAME: ""
