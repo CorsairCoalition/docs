@@ -30,7 +30,7 @@ services:
       - ui
     image: ghcr.io/corsaircoalition/commandercortex:latest
     volumes:
-      - ./config.pybot1.json:/config.json # configuration for bot 1
+      - ./config.pybot.json:/config.json # configuration for Pybot
     depends_on:
       - redis
       - sergeant-socket
