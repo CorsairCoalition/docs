@@ -12,7 +12,7 @@ services:
   #
   sergeant-socket:
     container_name: sergeant-socket-Pybot
-    image: ghcr.io/corsaircoalition/sergeantsocket:latest
+    image: ghcr.io/corsaircoalition/sergeantsocket:3
     volumes:
       - ./config.pybot.json:/config.json # configuration for Pybot
     depends_on:
@@ -28,7 +28,7 @@ services:
     container_name: commander-cortex-Pybot
     profiles:
       - ui
-    image: ghcr.io/corsaircoalition/commandercortex:latest
+    image: ghcr.io/corsaircoalition/commandercortex:1
     volumes:
       - ./config.pybot.json:/config.json # configuration for Pybot
     depends_on:
@@ -47,7 +47,7 @@ services:
   # note that flobot uses config.flobot.json
   flobot:
     container_name: flobot
-    image: ghcr.io/corsaircoalition/flobot:latest
+    image: ghcr.io/corsaircoalition/flobot:6
     volumes:
       - ./config.flobot.json:/config.json # configure Flobot to use config.flobot.json
     depends_on:

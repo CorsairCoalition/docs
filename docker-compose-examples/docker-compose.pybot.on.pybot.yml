@@ -12,7 +12,7 @@ services:
   #
   sergeant-socket-1:
     container_name: sergeant-socket-Pybot1
-    image: ghcr.io/corsaircoalition/sergeantsocket:latest
+    image: ghcr.io/corsaircoalition/sergeantsocket:3
     volumes:
       - ./config.pybot1.json:/config.json # configuration for bot 1
     depends_on:
@@ -27,7 +27,7 @@ services:
   commander-cortex-1:
     profiles:
       - ui
-    image: ghcr.io/corsaircoalition/commandercortex:latest
+    image: ghcr.io/corsaircoalition/commandercortex:1
     volumes:
       - ./config.pybot1.json:/config.json # configuration for bot 1
     depends_on:
@@ -47,7 +47,7 @@ services:
   #
   sergeant-socket-2:
     container_name: sergeant-socket-Pybot2
-    image: ghcr.io/corsaircoalition/sergeantsocket:latest
+    image: ghcr.io/corsaircoalition/sergeantsocket:3
     volumes:
       - ./config.pybot2.json:/config.json  # configuration for bot 2
     depends_on:
@@ -62,7 +62,7 @@ services:
   commander-cortex-2:
     profiles:
       - ui
-    image: ghcr.io/corsaircoalition/commandercortex:latest
+    image: ghcr.io/corsaircoalition/commandercortex:1
     volumes:
       - ./config.pybot2.json:/config.json # configuration for bot 2
     depends_on:

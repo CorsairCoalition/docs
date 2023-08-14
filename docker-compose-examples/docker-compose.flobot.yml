@@ -9,7 +9,7 @@ services:
   # Define the Flobot service
   flobot:
     container_name: flobot
-    image: ghcr.io/corsaircoalition/flobot:latest
+    image: ghcr.io/corsaircoalition/flobot:6
     volumes:
       - ./config.flobot.json:/config.json # configure Flobot to use config.flobot.json
     depends_on:

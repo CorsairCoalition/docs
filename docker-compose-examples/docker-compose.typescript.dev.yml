@@ -1,7 +1,7 @@
 services:
   armada-assault:
     build: ./ArmadaAssault
-    # image: ghcr.io/corsaircoalition/armadaassault:latest
+    # image: ghcr.io/corsaircoalition/armadaassault:2
     # command: ["--debug", "attack", "explore", "spread"]
     command: ["attack", "explore", "spread"]
     volumes:
@@ -17,7 +17,7 @@ services:
 
   sergeant-socket:
     build: ./SergeantSocket
-    # image: ghcr.io/corsaircoalition/sergeantsocket:latest
+    # image: ghcr.io/corsaircoalition/sergeantsocket:3
     # command: ["--debug"]
     volumes:
       - ./config.json:/config.json
@@ -33,7 +33,7 @@ services:
 
   strategy-sentinel:
     build: ./StrategySentinel
-    # image: ghcr.io/corsaircoalition/strategysentinel:latest
+    # image: ghcr.io/corsaircoalition/strategysentinel:1
     # command: ["--debug"]
     volumes:
       - ./config.json:/config.json
@@ -49,7 +49,7 @@ services:
   commander-cortex:
     profiles:
       - ui
-    image: ghcr.io/corsaircoalition/commandercortex:latest
+    image: ghcr.io/corsaircoalition/commandercortex:1
     # command: ["--debug"]
     volumes:
       - ./config.json:/config.json
