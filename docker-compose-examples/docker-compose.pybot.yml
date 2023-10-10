@@ -1,0 +1,42 @@
+services:
+
+  # Define the Redis service and expose Redis' default port on localhost
+  #
+  redis:
+    image: redis:alpine
+    ports:
+      - "6379:6379"
+
+  # Define the bot's SergeantSocket (IO Module) and CommanderCortex (UI) services
+  #
+  sergeant-socket:
+    container_name: sergeant-socket
+    image: ghcr.io/corsaircoalition/sergeantsocket:3
+    volumes:
+      - ./config.json:/config.json
+    depends_on:
+      - redis
+    environment: # use environment variables to override the values in config.json
+      REDIS_HOST: redis
+      REDIS_PORT: 6379
+      REDIS_TLS: false
+      REDIS_USERNAME: ""
+      REDIS_PASSWORD: ""
+
+  commander-cortex:
+    profiles:
+      - ui
+    image: ghcr.io/corsaircoalition/commandercortex:1
+    volumes:
+      - ./config.json:/config.json
+    depends_on:
+      - redis
+      - sergeant-socket
+    environment: # use environment variables to override the values in config.json
+      REDIS_HOST: redis
+      REDIS_PORT: 6379
+      REDIS_TLS: false
+      REDIS_USERNAME: ""
+      REDIS_PASSWORD: ""
+    stdin_open: true
+    tty: true
